@@ -9,7 +9,7 @@ circle_mocap = readtable("D:\Downloads\wed-23-circle-mocap.csv");
 
 % Pitch acceleration
 J = 0.003456;
-l = 1.2;
+l = 1.2; %I think l, the distance between propeller to propeller, should be 0.120m instead of 1.2m
 pitch_values_h = [];
 
 for i = 1:length(hover_telemetry.time)
