@@ -20,7 +20,7 @@ figure
 x = [dataFlight{6}.time, dataFlight{6}.pitchrate]; %IMU measured data
 y = [dataFlight{5}.time, dataFlight{5}.angvely]; %Commanded data from radio
 plot(x(:,1), x(:,2), y(:,1), y(:,2));
-xlim([9,17]);
+%xlim([9,17]);
 xlabel("Time (s)");
 ylabel("Pitch Rate (rad/s)");
 title("Time vs. Pitch Rate");
@@ -30,7 +30,7 @@ figure
 x = dataFlight{6}.time;
 y = [dataFlight{6}.thrust1 dataFlight{6}.thrust2 dataFlight{6}.thrust3 dataFlight{6}.thrust4];
 plot(x, y);
-xlim([9,17]);
+%xlim([9,17]);
 xlabel("Time (s)");
 ylabel("Thrust (N)");
 title("Time vs. Motor Thrust");
