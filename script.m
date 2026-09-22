@@ -16,27 +16,38 @@ end
 % 6. {'wed-23-hover-telemetry.csv' }
 
 %Task 8
-%subplot(2,1,1);
 figure
 x = [dataFlight{6}.time, dataFlight{6}.pitchrate]; %IMU measured data
 y = [dataFlight{5}.time, dataFlight{5}.angvely]; %Commanded data from radio
 plot(x(:,1), x(:,2), y(:,1), y(:,2));
+xlim([9,17]);
 xlabel("Time (s)");
-ylabel("Pitch Rate (º/s)");
-title("Measured vs. Commanded Pitch Rate");
+ylabel("Pitch Rate (rad/s)");
+title("Time vs. Pitch Rate");
 legend(["Measured" "Commanded"]);
 
-%subplot(2,1,2);
 figure
 x = dataFlight{6}.time;
 y = [dataFlight{6}.thrust1 dataFlight{6}.thrust2 dataFlight{6}.thrust3 dataFlight{6}.thrust4];
 plot(x, y);
+xlim([9,17]);
 xlabel("Time (s)");
 ylabel("Thrust (N)");
-title("Motor Thrust");
+title("Time vs. Motor Thrust");
 legend(["Thrust 1" "Thrust 2" "Thrust 3" "Thrust 4"]);
 
+%Reverse engineer pitch acceleration
+massMoment = 0.0138; %in kg•m^2
+propellerDistance = 0.12; %in meters
 
+figure
+x = dataFlight{6}.time;
+y = -(propellerDistance / (2 * massMoment)) .* (dataFlight{6}.thrust1 + dataFlight{6}.thrust2 - dataFlight{6}.thrust3 - dataFlight{6}.thrust4);
+plot(x, y);
+%xlim([9,17]);
+xlabel("Time (s)");
+ylabel("Pitch Acceleration (rad/s^2)");
+title("Time vs. Pitch Acceleration");
 
 
 
