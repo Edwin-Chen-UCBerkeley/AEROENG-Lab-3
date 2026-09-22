@@ -37,7 +37,7 @@ title("Time vs. Motor Thrust");
 legend(["Thrust 1" "Thrust 2" "Thrust 3" "Thrust 4"]);
 
 %Reverse engineer pitch acceleration
-massMoment = 0.0138; %in kg•m^2
+massMoment = 0.003456; %in kg•m^2
 propellerDistance = 0.12; %in meters
 
 figure
